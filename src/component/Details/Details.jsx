@@ -1,16 +1,8 @@
-import { useEffect, useState } from "react";
 
 const Details = () => {
-    const [details, setDetails] = useState([]);
-
-    useEffect(() => {
-        fetch('course.json')
-        .then(res => res.json())
-        .then(data => setDetails(data))
-    }, [])
     return (
-        <div>
-            
+        <div className="w-1/3">
+            <h2>book marks</h2>
         </div>
     );
 };

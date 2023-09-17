@@ -1,12 +1,21 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Parts from '../Parts/Parts';
+
+
 
 const Home = () => {
+    const [home, setHome] = useState([]);
+
+    useEffect(() => {
+        fetch('course.json')
+        .then(res => res.json())
+        .then(data => setHome(data))
+    }, [])
     return (
-        <div>
-            <h1 className='text-6xl'>Course Registration</h1>
-        </div>
+        home.map((parts, idx) => <Parts key={idx} parts={parts}></Parts>)
     );
 };
+
 
 export default Home;
