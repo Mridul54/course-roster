@@ -19,7 +19,7 @@ const Home = () => {
     const handleChoiceCart = (part) => {
         const isExist = selectPart.find(item => item.course_title == part.course_title)
         if(isExist) {
-            return alert("You select this card")
+            return alert("You already selected this card")
         }
         else{
             setSelectPart([...selectPart, part])
@@ -31,10 +31,19 @@ const Home = () => {
             setHoursRemaining(updateHoursRemaining);
         }
         else{
-            alert("You don't have enough hours for this course");
+            alert("You don't have sufficient hours for this course");
         }
 
-        
+        const updateTotalCredit = totalCredit + part.credit_hours;
+
+        if(updateTotalCredit <= 20){
+            setSelectPart([...selectPart, part]);
+            setHoursRemaining(hoursRemaining - part.credit_hours);
+            setTotalCredit(updateTotalCredit);
+        }
+        else{
+            alert("You can't overcome a total of 20 credit hours")
+        }
     }
     return (
         <div className='flex gap-10'>
@@ -69,16 +78,16 @@ const Home = () => {
             }
         </div>
         
-            <div className="shadow-xl p-12 h-96">
+            <div className="shadow-xl p-7 h-96">
 
-            <h1 className="text-[#2F80ED] font-bold text-lg">Credit Hour Remaining {hoursRemaining} hr </h1>
+            <h1 className="text-blue-500 font-bold text-xl mb-5">Credit Hour Remaining {hoursRemaining} hr </h1>
             <hr />
             <div className="mt-5 mb-5">
-                <h1 className="font-bold">Course Name</h1>
+                <h1 className="font-bold text-xl">Course Name</h1>
                 <Parts selectPart={selectPart}></Parts>
             </div>
             <hr />
-            <h1>Total Credit Hour : {totalCredit}</h1>
+            <h1 className='mt-3'>Total Credit Hour : {totalCredit}</h1>
         </div>
         </div>
             
