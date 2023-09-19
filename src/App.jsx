@@ -1,19 +1,18 @@
+
 import './App.css'
-import Details from './component/Details/Details'
 import Header from './component/Header/Header'
 import Home from './component/Home/Home'
 
 
 function App() {
   
-
   return (
     <>
     <Header></Header>
-    <div className='flex  mx-auto'>
+    <div className='w-[1440px] mx-auto flex justify-center gap-10'>
       
-      <Home></Home>
-      <Details></Details>
+      <Home ></Home>
+      
       
       </div>
     </>
